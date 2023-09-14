@@ -29,3 +29,8 @@ export interface AxiosResponse {
     callCode: string;
   }
   
+  export interface RepoItem {
+    type: string;
+    name: string;
+    path: string;
+  }

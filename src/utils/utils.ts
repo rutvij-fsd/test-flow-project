@@ -14,7 +14,7 @@ export async function fetchRepoFiles(path = ""): Promise<RepoItem[] | string> {
             return response.data;  // Return file content as string
         }
         return response.data;  // Return list of files or directories
-    } catch (error) {
+    } catch (error : any) {
         console.error(`Error fetching repo files: ${error.message}`);
         return [];
     }

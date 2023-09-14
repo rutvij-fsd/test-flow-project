@@ -1,5 +1,6 @@
 import { Graph } from 'graphlib';
 import { Occurrence } from './types';
+import { analyzeFunctionUsage } from './codeAnalysis';
 
 export function displayResults(occurrences: Occurrence[]): void {
     console.log("Occurrences of the identifier:\n");
@@ -12,12 +13,12 @@ export function displayResults(occurrences: Occurrence[]): void {
     });
 }
 
-export function displayGraphWithCode(graph: Graph): void {
+export async function displayGraphWithCode(graph: Graph, occurrences: Occurrence[]): Promise<void> {
     for (let occurrence of occurrences) {
         if (occurrence.function !== "Global/Outside Function") {
             let functionUsages = await analyzeFunctionUsage(occurrence.function);
             functionUsages.forEach(usage => {
-                g.setEdge(occurrence.file, usage.file, usage.callCode);
+                graph.setEdge(occurrence.file, usage.file, usage.callCode);
             });
         }
     }
