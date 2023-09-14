@@ -3,7 +3,7 @@ import traverse from '@babel/traverse';
 import { fetchRepoFiles, isValidFile } from './utils';
 import { Occurrence, FunctionUsage } from './types';
 
-type PluginName = "jsx" | "typescript"; // Add more plugin names as needed
+type PluginName = "jsx" | "typescript";
 
 const AST_PARSE_CONFIG: {
   sourceType: "module" | "script" | "unambiguous";

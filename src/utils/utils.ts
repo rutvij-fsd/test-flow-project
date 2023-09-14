@@ -11,9 +11,9 @@ export async function fetchRepoFiles(path = ""): Promise<RepoItem[] | string> {
     try {
         const response = await axiosInstance.get(path);
         if (typeof response.data === 'string') {
-            return response.data;  // Return file content as string
+            return response.data;
         }
-        return response.data;  // Return list of files or directories
+        return response.data;
     } catch (error : any) {
         console.error(`Error fetching repo files: ${error.message}`);
         return [];
